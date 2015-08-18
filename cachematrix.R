@@ -2,16 +2,15 @@
 ## R Programmming course, August 2015.
 ## Programming Assignment 2: Lexical Scoping.
 
-## This file contains two functions that, when used in combination, cache a the inverse of a matrix. 
+## This file contains two functions that, when used in combination, cache the inverse of a matrix. 
 ## If the matrix passed to the functions has been inversed already and thus is cached, the function retrieves the inversed matrix rather than re-computing it.
-
 
 ## The makeCacheMatrix function creates a special "matrix" object that caches its inverse. 
 ## The matrix, x, is inversed using the solve() function; it is required that the matrix passed to the function is inversible.
 
 makeCacheMatrix <- function(x = matrix()) {
         m <- NULL # the value of the inverse matrix is initially set to NULL
-        set <- function(y){ # the value of the matrix is set
+        set <- function(y){ # sets the value of the matrix
                 x <<- y 
                 m <<- NULL # if the matrix is changed a previously computed inverse matrix is reset to NULL
                 }
@@ -22,8 +21,8 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## The special "matrix" returned by makeCacheMatrix is then passed to the cacheSolve, which computes the inverse of the special "matrix". 
-## If the inverse has already been computed, the cacheSolve retrieves the inverse from the cache, otherwise it computes the inverse and retrieves it.
+## The special "matrix" returned by makeCacheMatrix is then passed to the cacheSolve function, which computes the inverse of the special "matrix" and caches it. 
+## If the inverse has already been computed, the cacheSolve retrieves the inverse from the cache, otherwise it computes the inverse, caches and retrieves it.
 
 cacheSolve <- function(x, ...) {
         m <- x$getinverse()
